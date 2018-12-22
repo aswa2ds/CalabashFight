@@ -14,7 +14,6 @@ enum MonsterEnum{
 }
 
 public class Monster extends Creature {
-    private final int rank;
     public Monster(MonsterEnum monster, Position position){
         super(1, monster.name, position, monster.image);
         this.rank = monster.rank;

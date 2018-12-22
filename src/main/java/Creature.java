@@ -9,6 +9,7 @@ public class Creature {
     protected String name;
     protected Position position;
     protected Image image;
+    protected int rank;
 
     public Creature(int camp, String name, Position position, @Nullable Image image){
         this.camp = camp;

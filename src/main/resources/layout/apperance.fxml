@@ -14,9 +14,10 @@
     <top>
         <MenuBar>
             <Menu text="game">
-                <MenuItem fx:id="startMenuItem" text="start" onAction="#handleStartGame"/>
-                <MenuItem fx:id="reloadMenuItem" text="reload"/>
-                <MenuItem fx:id="exitMenuItem" text="exit" onAction="#handleExitWindow"/>
+                <MenuItem fx:id="startMenuItem" text="开始游戏" onAction="#handleStartGame"/>
+                <MenuItem fx:id="reloadMenuItem" text="读档" onAction="#handleReloadGame"/>
+                <MenuItem fx:id="saveMenuItem" text="存档" onAction="#handleSaveGame"/>
+                <MenuItem fx:id="exitMenuItem" text="退出游戏" onAction="#handleExitWindow"/>
             </Menu>
             <Menu text="music">
                 <MenuItem fx:id="huluwa" text="葫芦娃" onAction="#handleMusicPlay"/>

@@ -28,8 +28,8 @@ public class Position {
     public void setX(double x){ this.x = x; }
     public void setY(double y){ this.y = y; }
 
-    public static boolean outOfBounds(Position pos){
-        if(pos.x < 0 || pos.x >= columnCount || pos.y < 0 || pos.y >= rowCount)
+    public static boolean outOfBounds(Position pos) {
+        if (pos.x < 0 || pos.x >= columnCount || pos.y < 0 || pos.y >= rowCount)
             return true;
         return false;
     }

@@ -31,6 +31,7 @@ public class MainWindowController {
     private int leftCount;
     private int rightCount;
     private boolean fighting;
+    private Position lastPos;
     private List<Creature> creatures;
     @FXML protected void handleExitWindow(ActionEvent event){
         Platform.exit();
@@ -45,8 +46,12 @@ public class MainWindowController {
         BackGroundMusic.play(pressedItem.getId());
     }
 
-    private void initCreatures() throws Exception{
-        File initFile = new File("src/main/resources/files/init");
+    private void initCreatures(boolean init) throws Exception{
+        File initFile;
+        if(init)
+            initFile = new File("src/main/resources/files/init");
+        else
+            initFile = new File("src/main/resources/files/save");
 
         if(!initFile.exists()){
             throw new Exception("file does not exist");
@@ -144,6 +149,17 @@ public class MainWindowController {
             public void handle(MouseEvent me) {
                 if(!fighting)
                     return;
+                if(lastPos == null){
+                    lastPos = new Position(me.getX(), me.getY());
+                }else{
+                    Position newPos = new Position(me.getX(), me.getY());
+                    if(lastPos.distance(newPos) <= 100)
+                        return;
+                    else{
+                        lastPos = newPos;
+                    }
+                }
+
                 for(Creature creature:creatures) {
                     if(creature == null)
                         continue;
@@ -183,9 +199,26 @@ public class MainWindowController {
     @FXML protected void handleStartGame(ActionEvent event) throws Exception{
         final GraphicsContext gc = fightBlock.getGraphicsContext2D();
         initFightBlock(gc);
-        initCreatures();
+        initCreatures(true);
         for(Creature creature : creatures)
             creature.drawSelf(gc, unitWidth, unitHeight);
         //TODO: repaint (move one creature)
+    }
+
+    @FXML protected void handleSaveGame(ActionEvent event) throws Exception{
+        PrintWriter writer = new PrintWriter("src/main/resources/files/save", "UTF-8");
+        for(Creature creature: creatures){
+            if(creature!=null)
+                writer.printf("%d %d %d %d;\n", creature.camp, creature.rank, (int)creature.position.getX(), (int)creature.position.getY());
+        }
+        writer.close();
+    }
+
+    @FXML protected void handleReloadGame(ActionEvent event) throws Exception{
+        final GraphicsContext gc = fightBlock.getGraphicsContext2D();
+        initFightBlock(gc);
+        initCreatures(false);
+        for(Creature creature : creatures)
+            creature.drawSelf(gc, unitWidth, unitHeight);
     }
 }

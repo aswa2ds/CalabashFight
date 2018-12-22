@@ -14,7 +14,6 @@ enum CalabashEnum{
 }
 
 public class Calabash extends Creature {
-    private final int rank;
     public Calabash(CalabashEnum calabash, Position position){
         super(0, calabash.name, position, calabash.image);
         this.rank = calabash.rank;
