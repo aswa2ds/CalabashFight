@@ -1,0 +1,39 @@
+<?import javafx.scene.layout.BorderPane?>
+<?import java.net.URL?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Label?>
+<BorderPane fx:controller="MainWindowController"
+            styleClass="root"
+            xmlns:fx="http://javafx.com/fxml">
+    <stylesheets>
+        <URL value = "@apperance.css"/>
+    </stylesheets>
+    <top>
+        <MenuBar>
+            <Menu text="game">
+                <MenuItem fx:id="startMenuItem" text="开始游戏" onAction="#handleStartGame"/>
+                <MenuItem fx:id="reloadMenuItem" text="读档" onAction="#handleReloadGame"/>
+                <MenuItem fx:id="saveMenuItem" text="存档" onAction="#handleSaveGame"/>
+                <MenuItem fx:id="exitMenuItem" text="退出游戏" onAction="#handleExitWindow"/>
+            </Menu>
+            <Menu text="music">
+                <MenuItem fx:id="huluwa" text="葫芦娃" onAction="#handleMusicPlay"/>
+                <MenuItem fx:id="dazhangweihuluwa" text="大张伟-葫芦娃(remix)" onAction="#handleMusicPlay"/>
+                <MenuItem fx:id="remix" text="左右声道混放" onAction="#handleMusicPlay"/>
+                <MenuItem fx:id="stop" text="停止播放" onAction="#handleMusicPlay"/>
+            </Menu>
+        </MenuBar>
+    </top>
+    <center>
+        <Canvas fx:id="fightBlock" width="1600" height="900">
+        </Canvas>
+    </center>
+    <bottom>
+        <Label fx:id="finishLabel" text="finish" prefWidth="Infinity" visible="false">
+        </Label>
+    </bottom>
+
+</BorderPane>

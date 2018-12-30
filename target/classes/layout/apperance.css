@@ -1,0 +1,11 @@
+.root{
+    -fx-background-image: url("/pics/donotpanic.png");
+    -fx-background-size: 100%;
+}
+
+#finishLabel{
+    -fx-font-size: 50px;
+    -fx-alignment: center;
+    -fx-text-fill: red;
+    -fx-border-color: green;
+}
